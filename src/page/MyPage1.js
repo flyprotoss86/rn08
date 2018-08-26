@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
-import MCV from '../style/MCV'
+import MCV,{totalWidth,totalHeight} from '../style/MCV'
+
 
 export default class MyPage1 extends Component{
     static navigationOptions = {
@@ -11,18 +12,19 @@ export default class MyPage1 extends Component{
     }
 
     render (){
+        let arr = []
+        for(let i = 0; i < 50; i++){
+            arr.push(i)
+        }
         return (
-            <View style={[MCV.container,{backgroundColor: '#F00'}]}>
-                <Text onPress={()=>{
-                    this.props.navigation.navigate('Page2')
-                }}>page1111</Text>
+            <View style={[MCV.page, {backgroundColor: '#F00'}]}>
+
                 {
-                    (
-                        this.props.navigation.state.params ? (
-                            <Text>222</Text>
-                        ):null
-                    )
+                    arr.map((i)=>(
+                        <Text key={i}>{i}</Text>
+                    ))
                 }
+
 
 
             </View>
