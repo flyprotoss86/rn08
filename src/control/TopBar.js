@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
 import MCV from "../style/MCV"
-import { getTimeStr } from '../util/Util'
+import util from '../util/util'
 
 export default class TopBar extends Component{
     constructor(props){
@@ -22,7 +22,7 @@ export default class TopBar extends Component{
     render(){
         return (
                 <View style={MCV.topBar}>
-                    <Text style={MCV.topBarTxt}>{getTimeStr(this.state.now)}</Text>
+                    <Text style={MCV.topBarTxt}>{util.getTimeStr(this.state.now)}</Text>
                 </View>
             )
     }

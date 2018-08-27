@@ -6,7 +6,7 @@ import MCV from './src/style/MCV'
 import TopBar from './src/control/TopBar'
 import UserIcon from './src/control/UserIcon'
 
-import Page1 from './src/page/MyPage1'
+import Home from './src/page/Home'
 import Page2 from './src/page/MyPage2'
 import Page3 from './src/page/MyPage3'
 import Page4 from './src/page/MyPage4'
@@ -24,7 +24,7 @@ const navRouterConfig = [
     {routeName: 'mine', routeTitle: '我的'}
 ]
 const CustomTabRouter = TabRouter({
-    home: {screen: Page1, path: ''},
+    home: {screen: Home, path: ''},
     amy: {screen: Page2, path: 'page2'},
     sleepManage: {screen: Page3, path: 'page3'},
     videoCall: {screen: Page4, path: 'page4'},
@@ -33,15 +33,6 @@ const CustomTabRouter = TabRouter({
 })
 const CustomTabBar = ({navigation}) => {
     const {routes} = navigation.state
-     //console.log(routes)
-    // console.log(2)
-
-    console.log(navigation.state.index)
-
-    // console.log(navRouterConfig)
-    //{navRouterConfig.filter(config=>config.routeName===route.routeName)[0].routeTitle}
-    //console.log(navRouterConfig.filter(config=>config.routeName==='')[0].routeTitle)
-
     return (
         <SafeAreaView styles={MCV.navContainer}>
             <StatusBar hidden={true}/>
@@ -56,7 +47,6 @@ const CustomTabBar = ({navigation}) => {
                             {navRouterConfig.filter(config=>config.routeName===route.routeName)[0].routeTitle}
                         </Text>
                     </View>
-
                     </TouchableOpacity>
                 ))
             }
@@ -67,16 +57,15 @@ const CustomTabView = ({descriptors, navigation}) => {
     const {routes, index} = navigation.state
     const descriptor = descriptors[routes[index].key]
     const ActiveScreen = descriptor.getComponent()
-    // console.log( descriptor)
     return (
         <SafeAreaView style={MCV.container} forceInset={{top: 'always'}}>
             <View style={MCV.sideBar}>
                 <UserIcon userId={55}></UserIcon>
                 <CustomTabBar navigation={navigation}/>
             </View>
-            <View style={MCV.mainContont}>
+            <View style={MCV.rightSide}>
                 <TopBar/>
-                <ScrollView style={MCV.content}>
+                <ScrollView style={MCV.mainContent}>
                     <ActiveScreen navigation={descriptor.navigation}/>
                 </ScrollView>
             </View>

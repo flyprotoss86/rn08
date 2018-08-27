@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
-import MCV,{totalWidth,totalHeight} from '../style/MCV'
+import MCV,{totalWidth,totalHeight,pixRatio} from '../style/MCV'
 
 
 export default class MyPage1 extends Component{
@@ -18,6 +18,7 @@ export default class MyPage1 extends Component{
         }
         return (
             <View style={[MCV.page, {backgroundColor: '#F00'}]}>
+                <Text>@{totalWidth}@{totalHeight}@{pixRatio}@</Text>
 
                 {
                     arr.map((i)=>(
